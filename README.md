@@ -31,6 +31,4 @@ SAMAD is a speech assessment model which consists of three important ingredients
 * Specifically designed to target criteria essential for the evaluation of spontaneous spoken responses.
 
 ## How to get the dataset?
-* Please contact to Language Training & Testing Center (LTTC) to ask for the dataset.
-
-## Sample
+* To obtain the dataset, please reach out to the Language Training & Testing Center (LTTC).
