@@ -1,5 +1,5 @@
 # SAMAD (Speech Assessment Multi-Aspect Design)
-![image](/icon/SAMAD.png)
+<img src="/icon/SAMAD.png" alt="" width="500" height="300">
 
 ## Package Requirements
 
