@@ -33,5 +33,5 @@ SAMAD is a speech assessment model which consists of three important ingredients
 * To obtain the dataset, please reach out to the Language Training & Testing Center (LTTC).
 
 ## Results
-<img src="/icon/unseen" alt="" width="578" height="450">
+<img src="/icon/unseen.png" alt="" width="578" height="450">
 
