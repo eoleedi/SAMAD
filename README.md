@@ -1,5 +1,5 @@
 # SAMAD (Speech Assessment Multi-Aspect Design)
-<img src="/icon/SAMAD.png" alt="" width="678" height="529">
+<img src="/icon/SAMAD.png" alt="" width="578" height="450">
 
 ## Package Requirements
 
@@ -22,12 +22,12 @@ Note that every run does not produce the same results due to the random elements
 
 
 ## What is SAMAD?
-SAMAD is a speech assessment model which consists of three important ingredients: prompt-relevance, delivery, and language use. Each module is designed to specific criteria essential for the evaluation of spontaneous spoken responses.
+SAMAD is a speech assessment model which consists of three important ingredients: **prompt-relevance, delivery, and language use.** Each module is designed to specific criteria essential for the evaluation of spontaneous spoken responses.
 
 ## Features
-* Optimized with soft labels to emphasize the ordinal properties of automatic speech assessment tasks.
-* Combines self-supervised pre-trained (SSL) models with handcrafted indicator features to enrich the representation of spoken responses.
-* Specifically designed to target criteria essential for the evaluation of spontaneous spoken responses.
+* **Optimized with soft labels to emphasize the ordinal properties of automatic speech assessment tasks.**
+* **Combines self-supervised pre-trained (SSL) models with handcrafted indicator features to enrich the representation of spoken responses.**
+* **Specifically designed to target criteria essential for the evaluation of spontaneous spoken responses.**
 
 ## How to get the dataset?
 * To obtain the dataset, please reach out to the Language Training & Testing Center (LTTC).
