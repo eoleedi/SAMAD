@@ -10,6 +10,7 @@ Install the following packages in your virtual environment before running the co
 You can run the following command in your virtual environment:
 
 ```pip install -r requirements.txt```
+	
 
 ## Training and Evaluation
 
@@ -18,3 +19,18 @@ Run
 ```bash test.sh```
 
 Note that every run does not produce the same results due to the random elements.
+
+
+## What is SAMAD?
+SAMAD is a speech assessment model which consists of three important ingredients: prompt-relevance, delivery, and language use. Each module is designed to specific criteria essential for the evaluation of spontaneous spoken responses.
+
+
+## Features
+* Optimized with soft labels to emphasize the ordinal properties of automatic speech assessment tasks.
+* Combines self-supervised pre-trained (SSL) models with handcrafted indicator features to enrich the representation of spoken responses.
+* Specifically designed to target criteria essential for the evaluation of spontaneous spoken responses.
+
+## How to get the dataset?
+* Please contact to Language Training & Testing Center (LTTC) to ask for the dataset.
+
+## Sample
