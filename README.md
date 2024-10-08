@@ -16,7 +16,7 @@ You can run the following command in your virtual environment:
 
 Run
 ```bash train.sh```
-```bash test.sh```
+```bash test_submodule.sh```
 
 Note that every run does not produce the same results due to the random elements.
 
