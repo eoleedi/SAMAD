@@ -68,12 +68,12 @@ def preprocess(examples):
     vec = pad_delivery_sequences(vec_list)
 
     # ================== Language =================================
-    onehot_encoding = [text2BinVec(txt) for txt in examples[args.asr_transcrip]]
+    onehot_encoding = [text2BinVec(txt) for txt in examples[args.asr_transcript]]
     padded_seq = pad_sequence(onehot_encoding) # [batch, sentence_length, 247]
     masked_seq = mask_seq(onehot_encoding)
 
     # ==================Content=================================
-    padded_response_emb = [combineContext(res) for res in examples[args.asr_transcrip]]
+    padded_response_emb = [combineContext(res) for res in examples[args.asr_transcript]]
     padded_prompt_emb   = [combineContext(prompt) for prompt in examples[args.description]]
 
     result = {
@@ -158,8 +158,8 @@ if __name__ == '__main__':
     parser.add_argument('--train_file',     help='path')
     parser.add_argument('--dev_file',       help='path')
     parser.add_argument('--output_dir',     help='path')
-    # parser.add_argument('--asr_transcrip',    default='asr_transcription', help='text_value')
-    parser.add_argument('--asr_transcrip', default='whisperX_transcription', help='text_value')
+    # parser.add_argument('--asr_transcript',    default='asr_transcripttion', help='text_value')
+    parser.add_argument('--asr_transcript', default='whisperX_transcription', help='text_value')
 
     parser.add_argument('--description',    default='prompt', help='description')
     parser.add_argument('--score',   default='grade', help='score_value')
@@ -197,8 +197,8 @@ if __name__ == '__main__':
         preprocess,
         batch_size=100,
         batched=True,
-        # remove_columns=['speaker_id', 'score', 'classification', 'description', 'example', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)', 'asr_transcrip', 'wav_path']
-        # remove_columns=['speaker_id', 'form_id', 'grade', 'wav_path', 'asr_transcription', 'prompt', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)']
+        # remove_columns=['speaker_id', 'score', 'classification', 'description', 'example', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)', 'asr_transcript', 'wav_path']
+        # remove_columns=['speaker_id', 'form_id', 'grade', 'wav_path', 'asr_transcripttion', 'prompt', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)']
         # WhisperX
         remove_columns=['example', 'wpm', 'total_num_word', 'level_1', 'level_2', 'level_3', 'seq_len', 'key1', 'key2', 'key3', 'key4', 'avg', 'all_avg_score', 'Threshold_Count', 'mean_pitch', 'mean_intensity', 'duration', 'localJitter', 'localShimmer', 'rapJitter', 'long_silence', 'silence', 'long_silence_num', 'silence_num', 'std_energy', 'avg_spectral', 'avg_energy_entropy', 'zero_cross_num', 'v_to_uv_ratio', 'voice_count', 'unvoice_count', 'mean_long_silence', 'mean_silence', 'more3word', 'num_word', 'whisperX_transcription', 'delivery_vec']
         # HI 
@@ -208,8 +208,8 @@ if __name__ == '__main__':
         preprocess,
         batch_size=100,
         batched=True,
-        # remove_columns=['speaker_id', 'score', 'classification', 'description', 'example', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)', 'asr_transcrip', 'wav_path']
-        # remove_columns=['speaker_id', 'form_id', 'grade', 'wav_path', 'asr_transcription', 'prompt', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)']
+        # remove_columns=['speaker_id', 'score', 'classification', 'description', 'example', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)', 'asr_transcript', 'wav_path']
+        # remove_columns=['speaker_id', 'form_id', 'grade', 'wav_path', 'asr_transcripttion', 'prompt', 'confidence_score', 'acoustic_score', 'lm_score', 'pitch', 'intensity', 'pause(sec)', 'silence(sec)', 'duration(sec)']
         # WhisperX
         remove_columns=['example', 'wpm', 'total_num_word', 'level_1', 'level_2', 'level_3', 'seq_len', 'key1', 'key2', 'key3', 'key4', 'avg', 'all_avg_score', 'Threshold_Count', 'mean_pitch', 'mean_intensity', 'duration', 'localJitter', 'localShimmer', 'rapJitter', 'long_silence', 'silence', 'long_silence_num', 'silence_num', 'std_energy', 'avg_spectral', 'avg_energy_entropy', 'zero_cross_num', 'v_to_uv_ratio', 'voice_count', 'unvoice_count', 'mean_long_silence', 'mean_silence', 'more3word', 'num_word', 'whisperX_transcription', 'delivery_vec']
         # HI
