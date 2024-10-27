@@ -10,3 +10,6 @@ seaborn==0.12.2
 spacy==3.7.4
 torch==2.1.1
 torchaudio==2.1.1
+wandb
+accelerate==0.34.2
+num2words==0.5.13
