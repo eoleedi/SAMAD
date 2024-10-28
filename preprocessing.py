@@ -165,12 +165,19 @@ def load_LTTC_dataset(input_path: str):
 
     raw_datasets = load_dataset("csv", data_files=data_files)
     raw_metadata = {
-        folder: {key: pd.read_csv(path) for key, path in value.items()}
-        for folder, value in metadata_files.items()
+        key: pd.read_csv(path) for key, path in list(metadata_files.values())[0].items() # all dataset should have the same metadata, use the first one
     }
 
     return raw_datasets, raw_metadata
 
+def load_prompt(examples, raw_metadata):
+    examples["prompt"] = []
+    for q_id in examples["question_id"]:
+        set_id = q_id.split("_")[0]
+        wav_id = int(q_id.split("_")[1])
+        prompt = raw_metadata[set_id].loc[raw_metadata[set_id]["wav_id"] == wav_id]["question"]
+        examples["prompt"].append(prompt)
+    return examples
 
 def main(args):
     input_path = args.input
@@ -182,6 +189,15 @@ def main(args):
     ## Load the audio files
     print("---Loading audio files---")
     raw_datasets = raw_datasets.map(load_audio_files, batched=True, num_proc=8)
+
+    ## Load Prompts (Questions)
+    print("---Loading prompts---")
+    raw_datasets = raw_datasets.map(
+        load_prompt,
+        batched=True,
+        num_proc=8,
+        fn_kwargs={"raw_metadata": raw_metadata},
+    )
 
     ## Transform numbers to words
     print("---Transform numbers to words---")
