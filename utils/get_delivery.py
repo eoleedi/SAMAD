@@ -35,6 +35,12 @@ def delivery_feat_preprocess(example):
                 tt = (0.08 - duration) / 2
                 start_sec -= tt
                 end_sec += tt
+                if start_sec < 0:
+                    end_sec -= start_sec
+                    start_sec = 0
+                elif end_sec > example["duration"]:
+                    start_sec -= end_sec - example["duration"]
+                    end_sec = example["duration"]
 
             duration = end_sec - start_sec
 
