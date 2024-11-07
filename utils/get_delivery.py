@@ -186,7 +186,8 @@ def delivery_feat_preprocess(example):
             print(f"wav_path: {example['wav_path']}")
             print(f"word_segment: {word_segment}")
             print(f"duration: {duration}")
+            print(e)
             example["delivery_vector"].append([0] * 13)
             continue
-    example["delivery_vector"] = np.array(example["delivery_vector"])
+    example["delivery_vector"] = str(example["delivery_vector"])
     return example
