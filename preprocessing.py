@@ -47,6 +47,13 @@ def num_to_words(text):
             after_spliting[index] = num2words(
                 after_spliting[index].replace(",", "").replace("$", "")
             )
+        elif (
+            after_spliting[index][:-1].replace(",", "").replace("$", "").isdigit()
+        ):
+            after_spliting[index] = (
+                num2words(after_spliting[index][:-1].replace(",", "").replace("$", ""))
+                + after_spliting[index][-1]
+            )
     numbers_to_words = " ".join(after_spliting)
     return numbers_to_words
 
@@ -175,7 +182,7 @@ def load_prompt(examples, raw_metadata):
     for q_id in examples["question_id"]:
         set_id = q_id.split("_")[0]
         wav_id = int(q_id.split("_")[1])
-        prompt = raw_metadata[set_id].loc[raw_metadata[set_id]["wav_id"] == wav_id]["question"]
+        prompt = raw_metadata[set_id].loc[raw_metadata[set_id]["wav_id"] == wav_id].iloc[0]["question"]
         examples["prompt"].append(prompt)
     return examples
 
@@ -210,7 +217,7 @@ def main(args):
     ## Delivery feature
     print("---Delivery feature---")
     raw_datasets = raw_datasets.map(
-        delivery_feat_preprocess, remove_columns=["word_segments"], num_proc=8
+        delivery_feat_preprocess, remove_columns=["word_segments"], num_proc=1
     )
 
     raw_datasets = raw_datasets.remove_columns(["audio"])
