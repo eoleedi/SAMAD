@@ -19,7 +19,7 @@ class MultiFeatureModel(nn.Module):
         self.embed_dim = embed_dim
         self.content_BLSTM = content_BLSTM().to(device)
         self.content_BLSTM.bert_freeze_feature_extractor()
-        self.Delivery_BLSTM = Delivery_BLSTM()
+        self.Delivery_BLSTM = Delivery_BLSTM(hidden_dim=13)
         self.Language_BLSTM = Language_BLSTM(POS, morph, DEP, hidden_dim).to(device)
         self.cross_attention_cd = QKVTransformer(3, 256, 4) # num_layers, d_model, num_heads
         self.cross_attention_cl = QKVTransformer(3, 256, 4) # num_layers, d_model, num_heads
