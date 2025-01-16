@@ -13,3 +13,4 @@ torchaudio==2.1.1
 wandb
 accelerate==0.34.2
 num2words==0.5.13
+evaluate==0.4.0
